@@ -7,7 +7,7 @@
 """
 
 
-"""Complexity O(n^2)"""
+"""Complexity O(n)"""
 class Solution:
     def reverseParentheses(self, s: str) -> str:
         stack = []
