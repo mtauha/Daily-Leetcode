@@ -2,17 +2,15 @@ class Solution:
     def insertGreatestCommonDivisors(
         self, head: Optional[ListNode]
     ) -> Optional[ListNode]:
-      """
-        Given the head of a linked list head, in which each node contains an integer value.
+        """
+            Given the head of a linked list head, in which each node contains an integer value.
 
-Between every pair of adjacent nodes, insert a new node with a value equal to the greatest common divisor of them.
+            Between every pair of adjacent nodes, insert a new node with a value equal to the greatest common divisor of them.
 
-Return the linked list after insertion.
+            Return the linked list after insertion.
 
-The greatest common divisor of two numbers is the largest positive integer that evenly divides both numbers.
-
- 
-      """
+            The greatest common divisor of two numbers is the largest positive integer that evenly divides both numbers.
+        """
     
         def _calculate_gcd(a, b):
             while b != 0:
