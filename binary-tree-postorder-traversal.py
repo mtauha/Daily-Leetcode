@@ -7,9 +7,9 @@ class TreeNode:
   
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-      """
-        Given the root of a binary tree, return the postorder traversal of its nodes' values.
-      """
+        """
+            Given the root of a binary tree, return the postorder traversal of its nodes' values.
+        """
         ans = []
         def traversal(node):
             if not node:
