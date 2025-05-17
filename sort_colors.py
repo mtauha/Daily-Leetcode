@@ -6,34 +6,29 @@
     You must solve this problem without using the library's sort function.
 """
 
-def swap(nums, i, j):
-    nums[i], nums[j] = nums[j], nums[i]
-
-
 class Solution:
-    def sort(self, nums, low, high):
-        if low < high:
-            pivot_index = self.partition(nums, low, high)
-            self.sort(nums, low, pivot_index - 1)
-            self.sort(nums, pivot_index + 1, high)
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        def swap(i, j):
+            nums[i], nums[j] = nums[j], nums[i]
+        
+        def sort(left, right):
+            if left < right:
+                pivot = partition(left, right)
+                sort(left, pivot - 1)
+                sort(pivot + 1, right)
 
-    def partition(self, nums: list[int], low, high):
-        pivot = nums[low]
-        left = low + 1
-        right = high
+        def partition(low, high):
+            pivot = nums[high]
+            i = low
+            for j in range(low, high):
+                if nums[j] < pivot:
+                    swap(i, j)
+                    i += 1
+            swap(i, high)
+            return i
 
-        while True:
-            while left <= right and nums[left] <= pivot:
-                left += 1
-            while left <= right and nums[right] >= pivot:
-                right -= 1
-            if left <= right:
-                swap(nums, left, right)
-            else:
-                break
-
-        swap(nums, low, right)
-        return right
-
-    def sortColors(self, nums: list[int]) -> None:
-        self.sort(nums, 0, len(nums) - 1)
+        sort(0, len(nums) - 1)
+        
