@@ -1,8 +1,7 @@
 class Solution:
     def lexicalOrder(self, n: int) -> List[int]:
         """
-            Given an integer n, return all the numbers in the range [1, n] sorted in lexicographical order.
-            You must write an algorithm that runs in O(n) time and uses O(1) extra space. 
+            This is the brute force approach in which you append all the 10th place integers then 10th and 1 place and so on.
         """
       
         ans = []
@@ -19,3 +18,33 @@ class Solution:
                 currentNumber += 1
         
         return ans
+        
+    def lexicalOrder2(self, n: int) -> List[int]:
+        """
+            This is a Trie approach in which we just make a tree out of each and every integer exclusively til 10.
+            WE stop generating tree when all numbers are generated till n
+            Then we parse through the whole trie and using Depth First search and store the search in array.
+
+            This way we get all the number lexicographically arranged
+        """ 
+        def lex(start, limit, arr):
+            if start > limit:
+                return
+            
+            arr.append(start)
+            
+            for i in range(10):
+                generated = start*10 + i
+
+                if generated <= limit:
+                    lex(generated, limit, arr)
+                else:
+                    break
+        
+        ans = []
+        for i in range(1, 10):
+            lex(i, n, ans)
+
+        return ans
+
+            
