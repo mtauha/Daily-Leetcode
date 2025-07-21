@@ -18,3 +18,20 @@ class Solution:
                 j += 1
 
         return "".join(s_list[:j])
+
+    def makeFancyString2(self, s: str) -> str:
+        last = s[0]
+        count = 1
+        ans = s[0]
+
+        for i in range(1, len(s)):
+            if s[i] == last:
+                count += 1
+            else:
+                count = 1
+                last = s[i]
+            
+            if count < 3:
+                ans += s[i]
+        
+        return ans
