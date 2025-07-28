@@ -17,3 +17,25 @@ class Solution:
             max_or_value |= num
 
         return dp[max_or_value]
+
+    def countMaxOrSubsets2(self, nums: List[int]) -> int:
+        maxOR = 0
+
+        for num in nums:
+            maxOR |= num
+        
+        n = len(nums)
+        totalSubsets = 1 << n
+        subsetsWithMaxOR = 0
+
+        for mask in range(totalSubsets):
+            currentOr = 0
+
+            for i in range(n):
+                if (mask >> i) & 1:
+                    currentOr |= nums[i]
+                
+            if currentOr == maxOR:
+                subsetsWithMaxOR += 1
+        
+        return subsetsWithMaxOR
