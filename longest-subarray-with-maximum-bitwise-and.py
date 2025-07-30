@@ -24,6 +24,21 @@ class Solution:
             ans = max(ans, current_streak)
 
         return ans
+
+    def longestSubarrayOptimized(self, nums: List[int]) -> int:
+        max_element = max(nums)
+
+        ans = 0
+        count = 0
+
+        for ptr2 in range(len(nums)):
+            if nums[ptr2] == max_element:
+                count += 1
+            else:
+                ans = max(ans, count)
+                count = 0
+        ans = max(ans, count)      
+        return ans
         
 
 
